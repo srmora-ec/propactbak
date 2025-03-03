@@ -25,7 +25,8 @@ from content.views import (
     ContratoUpdateView,
     TokenValidationView,
     ClausulaListView,
-    ContratoListView
+    ContratoListView,
+    RefreshToken
 )
 
 urlpatterns = [
@@ -42,4 +43,5 @@ urlpatterns = [
     path('api/token/validate/', TokenValidationView.as_view(), name='token_validate'),
     path('api/clausula/clausulas/', ClausulaListView.as_view(), name='clausula-list'),
     path('api/contrato/contratos/', ContratoListView.as_view(), name='contrato-list'),
+    path('api/token/refresh/', RefreshToken, name='token_refresh'),  
 ]

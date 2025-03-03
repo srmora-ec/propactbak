@@ -60,13 +60,9 @@ class ContratoListView(generics.ListAPIView):
 
 # Vista para verificar si el token es válido
 class TokenValidationView(generics.GenericAPIView):
-    permission_classes = [IsAuthenticated]
-
     def post(self, request, *args, **kwargs):
         try:
-            refresh_token = request.data.get('refresh_token')
-            token = RefreshToken(refresh_token)
-            token.check_blacklist()
+            permission_classes = [IsAuthenticated]
             return Response({"message": "Token is valid"}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"message": "Invalid or expired token"}, status=status.HTTP_401_UNAUTHORIZED)
